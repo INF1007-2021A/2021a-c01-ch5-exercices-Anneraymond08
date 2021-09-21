@@ -6,52 +6,68 @@ from typing import List
 
 
 def convert_to_absolute(number: float) -> float:
-    num_abs = 0
-    if number >= 0:
-        num_abs += number
-    else:
-        num_abs -= number
-    return num_abs
+    if number < 0:
+        return -number
+    return number
 
 
 def use_prefixes() -> List[str]:
     prefixes, suffixe = 'JKLMNOPQ', 'ack'
-    noms = ""
+    liste = []
     for char in prefixes:
-        noms += char + suffixe + " "
-    return noms
+        nom = char + suffixe
+        liste.append(nom)
+    return liste
 
 
 def prime_integer_summation() -> int:
-    quant_num = 0
-    somme = 0
-    i = 1
-    num = 2
-    while quant_num < 100:
-        for i in range(1,)
-            if (num % i) ==0:
-                num += 1
+    prime = [2,3,5]
+    number = 6
+    while len(prime) < 100:
+        is_prime = True
+        for diviseur in range(2,number//2):
+            if number % diviseur == 0:
+                # pas premier
+                is_prime = False
                 break
-            else:
-                somme += num
-                quant_num += 1
-                num += 1
-    return somme
+        if is_prime:
+            prime.append(number)
+        number += 1
+    return sum(prime)
 
 
 def factorial(number: int) -> int:
     facto_num = 1
-    for i in range(1,number):
+    for i in range(1,number+1):
         facto_num *= i
     return facto_num
 
 
 def use_continue() -> None:
-    pass
+    for i in range(1,11):
+        if i == 5:
+            continue
+        print(i)
+
 
 
 def verify_ages(groups: List[List[int]]) -> List[bool]:
-    return []
+    acceptance = []
+    for group in groups:
+        if len(group) > 10 or len(group) <= 3:
+            acceptance.append(False)
+            continue
+        if 25 in group:
+            acceptance.append(True)
+            continue
+        if min(group) < 18:
+            acceptance.append(False)
+            continue
+        if 50 in group and max(group) > 70:
+            acceptance.append(False)
+            continue
+        acceptance.append(True)
+    return acceptance
 
 
 def main() -> None:
